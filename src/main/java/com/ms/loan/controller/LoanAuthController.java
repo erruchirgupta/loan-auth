@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ms.loan.dto.AutoAssignRequest;
 import com.ms.loan.dto.GenericResponse;
 import com.ms.loan.dto.LoanAuthRequest;
 import com.ms.loan.dto.LoanAuthResponse;
-import com.ms.loan.dto.LoanType;
-import com.ms.loan.service.AutoAssignService;
 import com.ms.loan.service.LoanAuthControllerService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -44,21 +41,5 @@ public class LoanAuthController {
 								, null), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
 
-
-	@GetMapping(value = "/fetchTask/{type}", consumes="application/json", produces = "application/json; charset=UTF-8")
-	public ResponseEntity<GenericResponse> generateToken(@PathVariable LoanType type) {
-		log.debug("LoanType : {}", type);
-		try {
-			return new ResponseEntity<GenericResponse>(
-					new GenericResponse<LoanAuthResponse>(true, 
-							autoAssignService.callAutoAssignService(AutoAssignRequest)
-								, null), HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<GenericResponse>(
-					new GenericResponse<String>(false, ExceptionUtils.getStackTrace(e)
-								, null), HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
 }
