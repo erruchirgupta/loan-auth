@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: cardhost-sor
+Implementation-Version: 1.0.0
+Built-By: ruchir
+Implementation-Vendor-Id: com.ms.loan
+Build-Jdk: 1.8.0_191
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/loan-auth
+Created-By: Maven Integration for Eclipse
+
