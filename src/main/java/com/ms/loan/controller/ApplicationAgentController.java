@@ -2,11 +2,12 @@ package com.ms.loan.controller;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,6 +15,7 @@ import com.ms.loan.dto.GenericResponse;
 import com.ms.loan.dto.LoanApplicationStatus;
 import com.ms.loan.dto.LoanAuthResponse;
 import com.ms.loan.dto.LoanType;
+import com.ms.loan.dto.TaskResponse;
 import com.ms.loan.service.ApplicationAgentControllerService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -47,7 +49,7 @@ public class ApplicationAgentController {
         log.debug("LoanType : {}", type);
         try {
             return new ResponseEntity<GenericResponse>(
-                    new GenericResponse<>(true, new JSONObject().put("response", controllerService.callAutoAssignService(type)), null), HttpStatus.OK);
+                    new GenericResponse<TaskResponse>(true,  new TaskResponse(controllerService.callAutoAssignService(type)), null), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<GenericResponse>(
                     new GenericResponse<String>(false, ExceptionUtils.getStackTrace(e)
