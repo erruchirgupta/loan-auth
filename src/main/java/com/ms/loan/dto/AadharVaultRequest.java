@@ -1,4 +1,4 @@
-package com.ms.loan.beans;
+package com.ms.loan.dto;
 
 import java.io.Serializable;
 
@@ -17,13 +17,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class LoanAuthRequest implements Serializable {
-
-	private static final long serialVersionUID = -9138439920552504700L;
+public class AadharVaultRequest implements Serializable {
 	
-	private String custTitle;
-	private String custName;
-	private String pannumber;
-	private String dob;
+	private static final long serialVersionUID = 6619988965010016990L;
+	
+	private String name;
 	private String aadharNumber;
+	private String dob;
+
 }

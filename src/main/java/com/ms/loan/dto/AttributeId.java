@@ -1,4 +1,4 @@
-package com.ms.loan.beans;
+package com.ms.loan.dto;
 
 public enum AttributeId {
 

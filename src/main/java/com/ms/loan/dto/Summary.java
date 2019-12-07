@@ -1,6 +1,6 @@
-package com.ms.loan.beans;
+package com.ms.loan.dto;
 
-import java.io.Serializable;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -17,12 +17,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class AadharVaultRequestDTO implements Serializable {
-	
-	private static final long serialVersionUID = 6619988965010016990L;
-	
-	private String name;
-	private String aadharNumber;
-	private String dob;
+public class Summary {
 
+	private List<CreditAttribute> attributes;
+	
 }

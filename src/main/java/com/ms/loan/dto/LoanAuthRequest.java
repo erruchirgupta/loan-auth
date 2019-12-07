@@ -1,6 +1,6 @@
-package com.ms.loan.beans;
+package com.ms.loan.dto;
 
-import java.util.List;
+import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -17,8 +17,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class Summary {
+public class LoanAuthRequest implements Serializable {
 
-	private List<CreditAttribute> attributes;
+	private static final long serialVersionUID = -9138439920552504700L;
 	
+	private String custTitle;
+	private String custName;
+	private String pannumber;
+	private String dob;
+	private String aadharNumber;
 }

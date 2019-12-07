@@ -1,11 +1,11 @@
 package com.ms.loan.service;
 
-import com.ms.loan.beans.AadharVaultRequestDTO;
-import com.ms.loan.beans.AadharVaultResponseDTO;
-import com.ms.loan.beans.CreditScoreRequestDTO;
-import com.ms.loan.beans.CreditScoreResponseDTO;
-import com.ms.loan.beans.PanStatusRequestDTO;
-import com.ms.loan.beans.PanStatusResponseDTO;
+import com.ms.loan.dto.AadharVaultRequest;
+import com.ms.loan.dto.AadharVaultResponse;
+import com.ms.loan.dto.CreditScoreRequest;
+import com.ms.loan.dto.CreditScoreResponse;
+import com.ms.loan.dto.PanStatusRequest;
+import com.ms.loan.dto.PanStatusResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -14,12 +14,12 @@ import retrofit2.http.POST;
 public interface ApiService {
 
 	@POST("panStatus")
-	Call<PanStatusResponseDTO> callPanStatusApi(@Body PanStatusRequestDTO request);
+	Call<PanStatusResponse> callPanStatusApi(@Body PanStatusRequest request);
 	
 	@POST("aadharStatus")
-	Call<AadharVaultRequestDTO> callAadharStatusApi(@Body AadharVaultResponseDTO request);
+	Call<AadharVaultRequest> callAadharStatusApi(@Body AadharVaultResponse request);
 	
 	@POST("creditScoreCheck")
-	Call<CreditScoreResponseDTO> callCreditScoreCheckApi(@Body CreditScoreRequestDTO request);
+	Call<CreditScoreResponse> callCreditScoreCheckApi(@Body CreditScoreRequest request);
 	
 }

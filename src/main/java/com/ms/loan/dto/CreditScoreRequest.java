@@ -1,4 +1,4 @@
-package com.ms.loan.beans;
+package com.ms.loan.dto;
 
 import java.io.Serializable;
 
@@ -17,10 +17,15 @@ import lombok.ToString;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class CreditAttribute implements Serializable {
+public class CreditScoreRequest implements Serializable {
+
+	private static final long serialVersionUID = -8273659956935184791L;
 	
-	private static final long serialVersionUID = -8202663593608936452L;
+	private String custTitle;
+	private String custName;
+	private String pannumber;
+	private String dob;
+	private String aadharRefnum;
+	private String panToken;
 	
-	private AttributeId id;
-	private String value;
 }

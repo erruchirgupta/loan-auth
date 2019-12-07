@@ -1,18 +1,18 @@
 package com.ms.loan.service;
 
-import com.ms.loan.beans.AadharVaultRequestDTO;
-import com.ms.loan.beans.AadharVaultResponseDTO;
-import com.ms.loan.beans.CreditScoreRequestDTO;
-import com.ms.loan.beans.CreditScoreResponseDTO;
-import com.ms.loan.beans.PanStatusRequestDTO;
-import com.ms.loan.beans.PanStatusResponseDTO;
+import com.ms.loan.dto.AadharVaultRequest;
+import com.ms.loan.dto.AadharVaultResponse;
+import com.ms.loan.dto.CreditScoreRequest;
+import com.ms.loan.dto.CreditScoreResponse;
+import com.ms.loan.dto.PanStatusRequest;
+import com.ms.loan.dto.PanStatusResponse;
 
 public interface AuthService {
 
-	public PanStatusResponseDTO panStatusApi(PanStatusRequestDTO request);
+	public PanStatusResponse panStatusApi(PanStatusRequest request);
 	
-	public AadharVaultRequestDTO aadharStatusApi(AadharVaultResponseDTO request);
+	public AadharVaultRequest aadharStatusApi(AadharVaultResponse request);
 	
-	public CreditScoreResponseDTO creditScoreCheckApi(CreditScoreRequestDTO request);
+	public CreditScoreResponse creditScoreCheckApi(CreditScoreRequest request);
 	
 }

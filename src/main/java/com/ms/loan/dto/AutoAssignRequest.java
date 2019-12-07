@@ -1,4 +1,4 @@
-package com.ms.loan.beans;
+package com.ms.loan.dto;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +19,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class AutoAssignRequestDTO {
+public class AutoAssignRequest {
 
 	private String id;
 	private Map<String, String> params = new HashMap<String, String>();

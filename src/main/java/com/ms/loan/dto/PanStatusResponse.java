@@ -1,4 +1,4 @@
-package com.ms.loan.beans;
+package com.ms.loan.dto;
 
 import java.io.Serializable;
 
@@ -18,7 +18,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class PanStatusResponseDTO implements Serializable {
+public class PanStatusResponse implements Serializable {
 
     private static final long serialVersionUID = 5984742845223111095L;
 
