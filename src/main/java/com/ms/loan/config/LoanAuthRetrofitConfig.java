@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.ms.loan.service.ApiService;
+import com.ms.loan.service.AutoAssignService;
 
 import okhttp3.ConnectionPool;
 import okhttp3.Dispatcher;
@@ -29,7 +30,7 @@ public class LoanAuthRetrofitConfig {
     private static final int MAX_REQUESTS_PER_HOST = 50;
     
     private LoanAuthWebServiceConfig loanAuthRetrofitConfig;
-    
+    /*
     @Bean
     public ApiService getApiService() throws Exception {
         ConnectionPool connectionPool = new ConnectionPool(MAX_IDLE_CONNECTIONS, KEEP_ALIVE_DURATION, TimeUnit.MINUTES);
@@ -61,4 +62,37 @@ public class LoanAuthRetrofitConfig {
             .build()
             .create(ApiService.class);
     }
+    
+
+    @Bean
+    public AutoAssignService getAutoAssignService() throws Exception {
+        ConnectionPool connectionPool = new ConnectionPool(MAX_IDLE_CONNECTIONS, KEEP_ALIVE_DURATION, TimeUnit.MINUTES);
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.level(HttpLoggingInterceptor.Level.BODY);
+        Dispatcher dispatcher = new Dispatcher();
+        dispatcher.setMaxRequests(MAX_REQUESTS);
+        dispatcher.setMaxRequestsPerHost(MAX_REQUESTS_PER_HOST);
+    	
+        return new Retrofit.Builder()
+            .baseUrl(loanAuthRetrofitConfig.getUrl())
+            .addConverterFactory(JacksonConverterFactory.create())
+            .client(new OkHttpClient.Builder()
+                    .connectTimeout(2, TimeUnit.MINUTES)
+                    .readTimeout(2, TimeUnit.MINUTES)
+                    .writeTimeout(2, TimeUnit.MINUTES)
+                    .connectionPool(connectionPool)
+                    .dispatcher(dispatcher)
+                    .addInterceptor(loggingInterceptor)
+                    .addInterceptor(chain -> {
+                		return chain.proceed(chain.request().newBuilder()
+                				.addHeader(HEADER_CONTENT_TYPE, HEADER_CONTENT_TYPE_VAL)
+                				.addHeader(IBM_CLIENT_SECRET, loanAuthRetrofitConfig.getClientSecret())
+                				.addHeader(IBM_CLIENT_ID, loanAuthRetrofitConfig.getClientId())
+                				.addHeader(AUTHORIZATION, loanAuthRetrofitConfig.getAuth())
+                				.method(chain.request().method(), chain.request().body())
+                				.build());})
+                    .build())
+            .build()
+            .create(AutoAssignService.class);
+    }*/
 }
