@@ -46,8 +46,10 @@ public class ApplicationAgentController {
     
     @GetMapping(value = "/fetchTask/{type}", consumes="application/json", produces = "application/json; charset=UTF-8")
     public ResponseEntity<GenericResponse> fetchTask(@PathVariable LoanType type) {
-        log.debug("LoanType : {}", type);
+//        LoanType Ltype = LoanType.valueOf(type);
+        log.info("LoanType Req : {}", type);
         try {
+//            log.info("LoanType Res : {}", controllerService.callAutoAssignService(type));
             return new ResponseEntity<GenericResponse>(
                     new GenericResponse<TaskResponse>(true,  new TaskResponse(controllerService.callAutoAssignService(type)), null), HttpStatus.OK);
         } catch (Exception e) {

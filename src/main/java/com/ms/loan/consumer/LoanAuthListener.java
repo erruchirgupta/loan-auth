@@ -23,7 +23,7 @@ public class LoanAuthListener {
 		log.debug("Received Messasge for HOMELOAN: {}", message);
 		while (true) {
 			try {
-				if (Optional.ofNullable(task.get(LoanType.HOMELOAN)).isPresent())
+				if (task.get(LoanType.HOMELOAN).equals("NULL"))
 					Thread.sleep(10);
 				else
 					task.put(LoanType.HOMELOAN, message);
@@ -38,7 +38,7 @@ public class LoanAuthListener {
 		log.debug("Received Messasge for CARLOAN: {}", message);
 		while (true) {
 			try {
-				if (Optional.ofNullable(task.get(LoanType.CARLOAN)).isPresent())
+				if (task.get(LoanType.CARLOAN).equals("NULL"))
 					Thread.sleep(10);
 				else
 					task.put(LoanType.CARLOAN, message);
@@ -53,7 +53,7 @@ public class LoanAuthListener {
 		log.debug("Received Messasge for EDUCATIONLOAN: {}", message);
 		while (true) {
 			try {
-				if (Optional.ofNullable(task.get(LoanType.EDUCATIONLOAN)).isPresent())
+				if (task.get(LoanType.EDUCATIONLOAN).equals("NULL"))
 					Thread.sleep(10);
 				else
 					task.put(LoanType.EDUCATIONLOAN, message);

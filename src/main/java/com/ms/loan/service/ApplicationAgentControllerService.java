@@ -17,7 +17,10 @@ public class ApplicationAgentControllerService {
 	private ConcurrentHashMap<LoanType, String> task;
 	
 	public String callAutoAssignService(LoanType type) {
-		return task.get(type);
+		String loanApplication = task.get(type);
+		task.put(type, "NULL");
+		System.out.println(loanApplication);
+		return loanApplication;
 	}
 
 }
