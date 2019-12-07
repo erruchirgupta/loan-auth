@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import com.ms.loan.dto.AutoAssignMapResp;
 import com.ms.loan.dto.LoanType;
 
 @Configuration
@@ -20,7 +21,7 @@ public class LoanAuthApplication {
 	}
 	
 	@Bean
-	public ConcurrentHashMap<LoanType, String> getTask() {
+	public ConcurrentHashMap<LoanType, AutoAssignMapResp> getTask() {
 		return new ConcurrentHashMap<>();
 	}
 
