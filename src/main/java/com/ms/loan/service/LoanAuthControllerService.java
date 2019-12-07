@@ -18,5 +18,4 @@ public class LoanAuthControllerService {
 	public LoanAuthResponse processApplication(LoanAuthRequest request) {
 		return new LoanAuthResponse(request.getType(), "YES", null, "00");
 	}
-
 }
