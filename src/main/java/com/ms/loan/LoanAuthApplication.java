@@ -20,7 +20,7 @@ public class LoanAuthApplication {
 	}
 	
 	@Bean
-	private ConcurrentHashMap<LoanType, String> getTask() {
+	public ConcurrentHashMap<LoanType, String> getTask() {
 		return new ConcurrentHashMap<>();
 	}
 
