@@ -26,4 +26,5 @@ public class LoanAuthRequest implements Serializable {
 	private String pannumber;
 	private String dob;
 	private String aadharNumber;
+	private LoanType type;
 }

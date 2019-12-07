@@ -17,7 +17,7 @@ public interface ApiService {
 	Call<PanStatusResponse> callPanStatusApi(@Body PanStatusRequest request);
 	
 	@POST("aadharStatus")
-	Call<AadharVaultRequest> callAadharStatusApi(@Body AadharVaultResponse request);
+	Call<AadharVaultResponse> callAadharStatusApi(@Body AadharVaultRequest request);
 	
 	@POST("creditScoreCheck")
 	Call<CreditScoreResponse> callCreditScoreCheckApi(@Body CreditScoreRequest request);

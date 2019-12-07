@@ -9,7 +9,8 @@ import lombok.Getter;
 @Getter
 public class LoanAuthWebServiceConfig {
 
-	@Value("${webservices.default.url:https://loan-auth.free.beeceptor.com/}") 
+
+    @Value("${webservices.url:https://loan-auth.free.beeceptor.com/}")
     private String url;
     
     @Value("${webservices.client-secret:oE8dG3uE8fL6nW1yO3rJ6xP5gD1fD4mM7eP0lO7wC0nS5pD0mT}")

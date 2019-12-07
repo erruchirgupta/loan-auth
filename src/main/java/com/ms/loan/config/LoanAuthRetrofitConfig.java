@@ -2,12 +2,14 @@ package com.ms.loan.config;
 
 import java.util.concurrent.TimeUnit;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.ms.loan.service.ApiService;
 import com.ms.loan.service.AutoAssignService;
 
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.ConnectionPool;
 import okhttp3.Dispatcher;
 import okhttp3.OkHttpClient;
@@ -16,6 +18,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 @Configuration
+@Slf4j
 public class LoanAuthRetrofitConfig {
 	
 	private static final String HEADER_CONTENT_TYPE = "Content-Type";
@@ -29,10 +32,12 @@ public class LoanAuthRetrofitConfig {
     private static final int MAX_REQUESTS = 500;
     private static final int MAX_REQUESTS_PER_HOST = 50;
     
+    @Autowired
     private LoanAuthWebServiceConfig loanAuthRetrofitConfig;
-    /*
+   
     @Bean
     public ApiService getApiService() throws Exception {
+    	log.info("URL : {}", loanAuthRetrofitConfig.getUrl());
         ConnectionPool connectionPool = new ConnectionPool(MAX_IDLE_CONNECTIONS, KEEP_ALIVE_DURATION, TimeUnit.MINUTES);
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.level(HttpLoggingInterceptor.Level.BODY);
@@ -63,7 +68,6 @@ public class LoanAuthRetrofitConfig {
             .create(ApiService.class);
     }
     
-
     @Bean
     public AutoAssignService getAutoAssignService() throws Exception {
         ConnectionPool connectionPool = new ConnectionPool(MAX_IDLE_CONNECTIONS, KEEP_ALIVE_DURATION, TimeUnit.MINUTES);
@@ -94,5 +98,5 @@ public class LoanAuthRetrofitConfig {
                     .build())
             .build()
             .create(AutoAssignService.class);
-    }*/
+    }
 }
