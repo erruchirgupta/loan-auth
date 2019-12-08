@@ -13,6 +13,10 @@ public class LoanAuthWebServiceConfig {
     @Value("${webservices.url:https://loan-auth.free.beeceptor.com/}")
     private String url;
     
+
+    @Value("${webservices.url2:https://loan-auth.free.beeceptor.com/}")
+    private String url2;
+    
     @Value("${webservices.client-secret:oE8dG3uE8fL6nW1yO3rJ6xP5gD1fD4mM7eP0lO7wC0nS5pD0mT}")
     private String clientSecret;
     

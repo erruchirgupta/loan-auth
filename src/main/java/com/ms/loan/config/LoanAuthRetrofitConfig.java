@@ -78,7 +78,7 @@ public class LoanAuthRetrofitConfig {
         dispatcher.setMaxRequestsPerHost(MAX_REQUESTS_PER_HOST);
     	
         return new Retrofit.Builder()
-            .baseUrl(loanAuthRetrofitConfig.getUrl())
+            .baseUrl(loanAuthRetrofitConfig.getUrl2())
             .addConverterFactory(JacksonConverterFactory.create())
             .client(new OkHttpClient.Builder()
                     .connectTimeout(2, TimeUnit.MINUTES)
