@@ -1,5 +1,6 @@
 package com.ms.loan.dto;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,8 +20,10 @@ import lombok.ToString;
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_NULL)
-public class AutoAssignMapResp {
+public class AutoAssignMapResp implements Serializable {
 
+	private static final long serialVersionUID = 7147096415612313273L;
+	
 	private String id;
 	private String type;
 	private Map<String, String> params = new HashMap<String, String>();
