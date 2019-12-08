@@ -39,11 +39,6 @@ public class LoanAuthControllerService {
 			params.put("pannumber", request.getPannumber());
 			params.put("type", request.getType().toString());
 			
-			AutoAssignRequest
-			.builder()
-			.id(UUID.randomUUID().toString())
-			.params(params)
-			.type(request.getType().toString()).build();
 			log.info("test : {}", autoAssignService.callAutoAssignService(AutoAssignRequest
 					.builder()
 					.id(UUID.randomUUID().toString())
