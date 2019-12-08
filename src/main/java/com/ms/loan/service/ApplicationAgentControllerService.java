@@ -1,6 +1,9 @@
 package com.ms.loan.service;
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +23,23 @@ public class ApplicationAgentControllerService {
 
 	public AutoAssignMapResp callAutoAssignService(LoanType type) {
 		log.info("testt : {}", task);
+		Map<String, String> params = new HashMap<String, String>();
+
+			params.put("aadharNumber", "987790778512");
+			params.put("custTitle", "Mr");
+			params.put("custName", UUID.randomUUID().toString().substring(0, 10));
+			params.put("dob", "22-01-20");
+			params.put("pannumber", UUID.randomUUID().toString().substring(0, 8));
+			params.put("type", type.toString());
+		task.put(type, AutoAssignMapResp.builder()
+		.id(UUID.randomUUID().toString())
+		.type(type.toString())
+		.params(params)
+				.build());
 		task.entrySet().forEach(entry -> log.info(": {}", entry.getKey() + " " + entry.getValue()));
 //				.stream().forEach(x -> System.out.println(x + " " + task.get(x)));
 		AutoAssignMapResp loanApplication = task.get(type);
 		log.info("check : {}", loanApplication);
-		task.put(type, null);
 		System.out.println(loanApplication);
 		return loanApplication;
 	}

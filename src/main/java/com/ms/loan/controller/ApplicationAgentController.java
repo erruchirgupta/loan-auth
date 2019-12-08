@@ -51,7 +51,7 @@ public class ApplicationAgentController {
                 temp = null;
             }
             return new ResponseEntity<GenericResponse>(
-                    new GenericResponse<TaskResponse>(true,  new TaskResponse(temp), null), HttpStatus.OK);
+                    new GenericResponse<AutoAssignMapResp>(true,  temp, null), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<GenericResponse>(
                     new GenericResponse<String>(false, ExceptionUtils.getStackTrace(e)
