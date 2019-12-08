@@ -27,9 +27,9 @@ public class ApplicationAgentControllerService {
 
 			params.put("aadharNumber", "987790778512");
 			params.put("custTitle", "Mr");
-			params.put("custName", UUID.randomUUID().toString().substring(0, 10));
+			params.put("custName",  RandomStringUtils.random(5, true, false));
 			params.put("dob", "22-01-20");
-			params.put("pannumber", UUID.randomUUID().toString().substring(0, 8));
+			params.put("pannumber", RandomStringUtils.random(10, false, true));
 			params.put("type", type.toString());
 		task.put(type, AutoAssignMapResp.builder()
 		.id(UUID.randomUUID().toString())
