@@ -43,11 +43,12 @@ public class LoanAuthControllerService {
 			.builder()
 			.id(UUID.randomUUID().toString())
 			.params(params)
-			.build();
+			.type(request.getType().toString()).build();
 			log.info("test : {}", autoAssignService.callAutoAssignService(AutoAssignRequest
 					.builder()
 					.id(UUID.randomUUID().toString())
 					.params(params)
+					.type(request.getType().toString())
 					.build()).execute());
 		} catch (Exception e) {
 			log.error("Unknown Exception : ", e);

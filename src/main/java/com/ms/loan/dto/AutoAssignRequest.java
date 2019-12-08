@@ -22,6 +22,7 @@ import lombok.ToString;
 public class AutoAssignRequest {
 
 	private String id;
+	private String type;
 	private Map<String, String> params = new HashMap<String, String>();
 	
 }

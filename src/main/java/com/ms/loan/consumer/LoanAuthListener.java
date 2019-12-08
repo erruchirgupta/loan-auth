@@ -30,13 +30,15 @@ public class LoanAuthListener {
 
 	@KafkaListener(topics = "${kafka.homeloan}", groupId = "${kafka.groupId}")
 	public void listenHomeLoan(String message) throws Exception {
-		log.debug("Received Messasge for HOMELOAN: {}", message);
 		while (true) {
 			try {
-				if (Optional.ofNullable(task.get(LoanType.HOMELOAN).getId()).isPresent())
+				task.entrySet().forEach(entry -> log.info(": {}", entry.getKey() + " " + entry.getValue()));
+				if (task.get(LoanType.HOMELOAN) == null)
 					Thread.sleep(10);
 				else {
+					log.info("Received Messasge for HOMELOAN: {}", message);
 					task.put(LoanType.HOMELOAN, jsonMapper.readValue(message, new TypeReference<AutoAssignMapResp>(){}));
+					break;
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -46,13 +48,15 @@ public class LoanAuthListener {
 
 	@KafkaListener(topics = "${kafka.carloan}", groupId = "${kafka.groupId}")
 	public void listenCarLoan(String message) throws Exception {
-		log.debug("Received Messasge for CARLOAN: {}", message);
 		while (true) {
 			try {
-				if (Optional.ofNullable(task.get(LoanType.CARLOAN).getId()).isPresent())
+				if (task.get(LoanType.CARLOAN) == null)
 					Thread.sleep(10);
-				else
-					task.put(LoanType.CARLOAN, jsonMapper.readValue(message, new TypeReference<AutoAssignMapResp>(){}));
+				else {
+					log.info("Received Messasge for CARLOAN: {}", message);
+					task.put(LoanType.CARLOAN, jsonMapper.readValue(message, new TypeReference<AutoAssignMapResp>() {}));
+					break;
+				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -61,13 +65,15 @@ public class LoanAuthListener {
 
 	@KafkaListener(topics = "${kafka.educationloan}", groupId = "${kafka.groupId}")
 	public void listenEducationLoan(String message) throws Exception {
-		log.debug("Received Messasge for CARLOAN: {}", message);
 		while (true) {
 			try {
-				if (Optional.ofNullable(task.get(LoanType.EDUCATIONLOAN).getId()).isPresent())
+				if (task.get(LoanType.EDUCATIONLOAN) == null)
 					Thread.sleep(10);
-				else
+				else{
+					log.info("Received Messasge for EDUCATIONLOAN: {}", message);
 					task.put(LoanType.EDUCATIONLOAN, jsonMapper.readValue(message, new TypeReference<AutoAssignMapResp>(){}));
+					break;
+				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

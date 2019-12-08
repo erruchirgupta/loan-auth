@@ -1,5 +1,6 @@
 package com.ms.loan.controller;
 
+import com.ms.loan.dto.*;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,11 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ms.loan.dto.GenericResponse;
-import com.ms.loan.dto.LoanApplicationStatus;
-import com.ms.loan.dto.LoanAuthResponse;
-import com.ms.loan.dto.LoanType;
-import com.ms.loan.dto.TaskResponse;
 import com.ms.loan.service.ApplicationAgentControllerService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -44,14 +40,18 @@ public class ApplicationAgentController {
         }
     }*/
     
-    @GetMapping(value = "/fetchTask/{type}", consumes="application/json", produces = "application/json; charset=UTF-8")
+    @GetMapping(value = "/fetchTask/{type}", produces = "application/json; charset=UTF-8")
     public ResponseEntity<GenericResponse> fetchTask(@PathVariable LoanType type) {
 //        LoanType Ltype = LoanType.valueOf(type);
         log.info("LoanType Req : {}", type);
         try {
 //            log.info("LoanType Res : {}", controllerService.callAutoAssignService(type));
+            AutoAssignMapResp temp = controllerService.callAutoAssignService(type);
+            if(temp.getId() == null) {
+                temp = null;
+            }
             return new ResponseEntity<GenericResponse>(
-                    new GenericResponse<TaskResponse>(true,  new TaskResponse(controllerService.callAutoAssignService(type)), null), HttpStatus.OK);
+                    new GenericResponse<TaskResponse>(true,  new TaskResponse(temp), null), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<GenericResponse>(
                     new GenericResponse<String>(false, ExceptionUtils.getStackTrace(e)
